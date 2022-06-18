@@ -1,6 +1,3 @@
-arr = [12, 11, 13, 5, 6, 7, 9, 0, 1, 2, 12]
-
-
 def sort(array, left, right):
     if len(array) < 2:
         return
@@ -46,6 +43,11 @@ def merge(array, left, mid, right):
         k += 1
 
 
-sort(arr, 0, len(arr) - 1)
+def main():
+    arr = [12, 11, 13, 5, 6, 7, 9, 0, 1, 2, 12]
+    sort(arr, 0, len(arr) - 1)
+    print(arr)
 
-print(arr)
+
+if __name__ == "__main__":
+    main()

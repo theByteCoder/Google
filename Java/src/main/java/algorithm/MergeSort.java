@@ -19,56 +19,45 @@ public class MergeSort {
 
     static void sort(int[] arr, int left, int right) {
         if (left < right) {
-            int mid = left + (right - left) / 2; // find the middle point
-            sort(arr, left, mid); // sort first halve
-            sort(arr, mid + 1, right); // sort second halve
-            merge(arr, left, mid, right); // merge the sorted halves
+            int mid = left + (right - left) / 2;
+            sort(arr, left, mid);
+            sort(arr, mid + 1, right);
+            merge(arr, left, mid, right);
         }
     }
 
     static void merge(int[] arr, int left, int mid, int right) {
-        // Find sizes of two sub-arrays to be merged
-        int leftSubArraySize = mid - left + 1;
-        int rightSubArraySize = right - mid;
+        int leftArrSize = mid - left + 1;
+        int rightArrSize = right - mid;
 
-        /* Create temp arrays */
-        int[] leftArray = new int[leftSubArraySize];
-        int[] rightArray = new int[rightSubArraySize];
+        int[] leftArr = new int[leftArrSize];
+        int[] rightArr = new int[rightArrSize];
 
-        /*Copy data to temp arrays*/
-        System.arraycopy(arr, left, leftArray, 0, leftSubArraySize);
+        System.arraycopy(arr, left, leftArr, 0, leftArrSize);
+        System.arraycopy(arr, mid + 1, rightArr, 0, rightArrSize);
 
-        System.arraycopy(arr, mid + 1, rightArray, 0, rightSubArraySize);
-
-        /* Merge the temp arrays */
-        // Initial indexes of first and second sub-arrays
         int i = 0;
         int j = 0;
-
-        // Initial index of merged sub-array array
         int k = left;
 
-        while (i < leftSubArraySize && j < rightSubArraySize) {
-            if (leftArray[i] <= rightArray[j]) {
-                arr[k] = leftArray[i];
+        while (i < leftArrSize && j < rightArrSize) {
+            if (leftArr[i] <= rightArr[j]) {
+                arr[k] = leftArr[i];
                 i++;
             } else {
-                arr[k] = rightArray[j];
+                arr[k] = rightArr[j];
                 j++;
             }
             k++;
         }
 
-        /* Copy remaining elements of L[] if any */
-        while (i < leftSubArraySize) {
-            arr[k] = leftArray[i];
+        while (i < leftArrSize) {
+            arr[k] = leftArr[i];
             i++;
             k++;
         }
-
-        /* Copy remaining elements of R[] if any */
-        while (j < rightSubArraySize) {
-            arr[k] = rightArray[j];
+        while (j < rightArrSize) {
+            arr[k] = rightArr[j];
             j++;
             k++;
         }

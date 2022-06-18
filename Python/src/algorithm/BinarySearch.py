@@ -10,5 +10,10 @@ def binary_search(arr, left, right, target):
     return -1
 
 
-array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
-print(binary_search(arr=array, left=0, right=len(array), target=3))
+def main():
+    array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+    print(binary_search(arr=array, left=0, right=len(array), target=3))
+
+
+if __name__ == "__main__":
+    main()
