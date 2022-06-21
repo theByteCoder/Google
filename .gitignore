@@ -1,5 +1,14 @@
 .DS_Store
 .idea
+
+Java/.idea
 Java/target/classes
+#Java/Java.iml
+
+JavaScript/.idea
 JavaScript/node_modules
-venv
+#JavaScript/JavaScript.iml
+
+Python/.idea
+Python/venv
+#Python/Python.iml
