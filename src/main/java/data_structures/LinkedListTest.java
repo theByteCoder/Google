@@ -32,5 +32,29 @@ public class LinkedListTest {
 
         res = linkedList.toString();
         logger.info(res);
+
+        // get
+        Node<Integer> any = linkedList.get(1);
+        String str = String.valueOf(any.data);
+        logger.info(str);
+
+        // hasNext
+        str = String.valueOf(any.hasNext());
+        logger.info(str);
+
+        res = linkedList.toString();
+        logger.info(res);
+
+        any = linkedList.get(8);
+        str = String.valueOf(any.data);
+        logger.info(str);
+
+        // hasNext
+        str = String.valueOf(any.hasNext());
+        logger.info(str);
+
+        // reverse
+        String size = String.valueOf(linkedList.size());
+        logger.info(size);
     }
 }

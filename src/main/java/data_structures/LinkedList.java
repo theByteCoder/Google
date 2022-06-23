@@ -1,5 +1,8 @@
 package data_structures;
 
+import java.util.Objects;
+import java.util.function.Predicate;
+
 class Node<T> {
     T data;
     Node<T> next;
@@ -7,6 +10,11 @@ class Node<T> {
 
     Node(T data) {
         this.data = data;
+    }
+
+    boolean hasNext() {
+        Predicate<Node<T>> hasNext = Objects::nonNull;
+        return hasNext.test(next);
     }
 }
 
@@ -17,15 +25,14 @@ class LinkedList<T> {
         this.head = null;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder res = new StringBuilder();
+    int size() {
+        int counter = 0;
         Node<T> current = head;
         while (current != null) {
-            res.append(current.data).append(", ");
             current = current.next;
+            counter++;
         }
-        return res.toString();
+        return counter;
     }
 
     void add(T data) {
@@ -62,5 +69,21 @@ class LinkedList<T> {
         Node<T> nextNodeAfterDelete = current.next.next;
         nextNodeAfterDelete.previous = current;
         current.next = nextNodeAfterDelete;
+    }
+
+    Node<T> get(int pos) {
+        Node<T> current = head;
+        for (int i = 0; i < pos; i++) {
+            current = current.next;
+        }
+        return current;
+    }
+
+    LinkedList<T> reverse() {
+        Node<T> current = head;
+        for(int i = 0; i < this.size(); i++) {
+
+        }
+        return this;
     }
 }

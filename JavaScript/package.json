@@ -1,9 +1,0 @@
-{
-  "name": "JavaScript",
-  "version": "1.0.0",
-  "dependencies": {
-  },
-  "scripts": {
-    "install": "npm install"
-  }
-}
