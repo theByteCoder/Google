@@ -78,12 +78,4 @@ class LinkedList<T> {
         }
         return current;
     }
-
-    LinkedList<T> reverse() {
-        Node<T> current = head;
-        for(int i = 0; i < this.size(); i++) {
-
-        }
-        return this;
-    }
 }

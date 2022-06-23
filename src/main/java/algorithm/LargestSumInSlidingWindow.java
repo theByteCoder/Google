@@ -1,7 +1,5 @@
 package algorithm;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
@@ -10,7 +8,6 @@ public class LargestSumInSlidingWindow {
     public static void main(String[] args) {
         Logger logger = Logger.getLogger(LargestSumInSlidingWindow.class.getName());
         int[] arr = {0, 1, 1, 1, 0};
-        List<int[]> list = Arrays.asList(arr);
         int k = 3;
         String res = String.valueOf(findMaxSumInSubArray(arr, k));
         logger.info(res);
