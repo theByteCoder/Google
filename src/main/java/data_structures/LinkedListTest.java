@@ -23,15 +23,15 @@ public class LinkedListTest {
         linkedList.insert(9, 9);
 
         // toString
-        String res = linkedList.toString();
-        logger.info(res);
+        Node<Integer> listHead = linkedList.head;
+        printLinkedList(listHead);
 
         // delete
         linkedList.delete(2);
         linkedList.delete(3);
 
-        res = linkedList.toString();
-        logger.info(res);
+        listHead = linkedList.head;
+        printLinkedList(listHead);
 
         // get
         Node<Integer> any = linkedList.get(1);
@@ -42,8 +42,8 @@ public class LinkedListTest {
         str = String.valueOf(any.hasNext());
         logger.info(str);
 
-        res = linkedList.toString();
-        logger.info(res);
+        listHead = linkedList.head;
+        printLinkedList(listHead);
 
         any = linkedList.get(8);
         str = String.valueOf(any.data);
@@ -53,8 +53,23 @@ public class LinkedListTest {
         str = String.valueOf(any.hasNext());
         logger.info(str);
 
-        // reverse
+        // size
         String size = String.valueOf(linkedList.size());
         logger.info(size);
+
+        // reverse
+        Node<Integer> reversedListHead = linkedList.reverse();
+        String res = printLinkedList(reversedListHead);
+        logger.info(res);
+    }
+
+    static String printLinkedList(Node<Integer> node) {
+        StringBuilder stringBuilder = new StringBuilder();
+        while (node != null) {
+            String str = String.format("%s ", node.data);
+            stringBuilder.append(str);
+            node = node.next;
+        }
+        return stringBuilder.toString();
     }
 }

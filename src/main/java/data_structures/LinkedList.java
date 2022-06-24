@@ -37,10 +37,10 @@ class LinkedList<T> {
 
     void add(T data) {
         Node<T> toAdd = new Node<>(data);
-        if (head == null) {
-            head = toAdd;
+        if (this.head == null) {
+            this.head = toAdd;
         } else {
-            Node<T> current = head;
+            Node<T> current = this.head;
             while (current.next != null) {
                 current = current.next;
             }
@@ -50,7 +50,7 @@ class LinkedList<T> {
 
     void insert(T data, int pos) {
         Node<T> toInsert = new Node<>(data);
-        Node<T> current = head;
+        Node<T> current = this.head;
         for (int i = 0; i < pos - 1; i++) {
             current = current.next;
         }
@@ -62,7 +62,7 @@ class LinkedList<T> {
     }
 
     void delete(int pos) {
-        Node<T> current = head;
+        Node<T> current = this.head;
         for (int i = 0; i < pos - 1; i++) {
             current = current.next;
         }
@@ -72,10 +72,26 @@ class LinkedList<T> {
     }
 
     Node<T> get(int pos) {
-        Node<T> current = head;
+        Node<T> current = this.head;
         for (int i = 0; i < pos; i++) {
             current = current.next;
         }
+        return current;
+    }
+
+    // 0, 1, 2
+    // 2, 1, 0
+
+    Node<T> reverse() {
+        Node<T> current = this.head;
+        Node<T> prev = null;
+        while (current != null) {
+            Node<T> next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+        current = prev;
         return current;
     }
 }
