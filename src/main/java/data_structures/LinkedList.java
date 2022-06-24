@@ -1,6 +1,7 @@
 package data_structures;
 
 import java.util.Objects;
+import java.util.Optional;
 import java.util.function.Predicate;
 
 class Node<T> {
@@ -28,7 +29,7 @@ class LinkedList<T> {
     int size() {
         int counter = 0;
         Node<T> current = this.head;
-        while (current != null) {
+        while (Optional.ofNullable(current).isPresent()) {
             current = current.next;
             counter++;
         }
@@ -41,7 +42,7 @@ class LinkedList<T> {
             this.head = toAdd;
         } else {
             Node<T> current = this.head;
-            while (current.next != null) {
+            while (Optional.ofNullable(current.next).isPresent()) {
                 current = current.next;
             }
             current.next = toAdd;
@@ -82,7 +83,7 @@ class LinkedList<T> {
     Node<T> reverse() {
         Node<T> current = this.head;
         Node<T> prev = null;
-        while (current != null) {
+        while (Optional.ofNullable(current).isPresent()) {
             Node<T> next = current.next;
             current.next = prev;
             prev = current;
