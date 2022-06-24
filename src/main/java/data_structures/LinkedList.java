@@ -79,9 +79,6 @@ class LinkedList<T> {
         return current;
     }
 
-    // 0, 1, 2
-    // 2, 1, 0
-
     Node<T> reverse() {
         Node<T> current = this.head;
         Node<T> prev = null;

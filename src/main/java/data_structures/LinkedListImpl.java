@@ -2,7 +2,7 @@ package data_structures;
 
 import java.util.logging.Logger;
 
-public class LinkedListTest {
+public class LinkedListImpl {
     public static void main(String[] args) {
         Logger logger = Logger.getLogger(LinkedList.class.getName());
         LinkedList<Integer> linkedList = new LinkedList<>();
