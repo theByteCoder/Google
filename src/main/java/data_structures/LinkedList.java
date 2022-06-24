@@ -27,7 +27,7 @@ class LinkedList<T> {
 
     int size() {
         int counter = 0;
-        Node<T> current = head;
+        Node<T> current = this.head;
         while (current != null) {
             current = current.next;
             counter++;
