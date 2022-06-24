@@ -1,3 +1,4 @@
+/*
 node {
   stage('SCM') {
     checkout scm
@@ -8,5 +9,19 @@ node {
       sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=local-development -Dsonar.host.url=https://97fd-116-193-141-246.ngrok.io -Dsonar.login=sqp_0ee40bc3e763cf9f35760dd9df763aac2d20123e"
     }
     waitForQualityGate(webhookSecretId: 'secret')
+  }
+} */
+
+pipeline {
+  agent any
+  tools {
+    maven 'maven-3.6.3'
+  }
+  stages {
+    stage ('Build') {
+      steps {
+        sh 'mvn clean package install'
+      }
+    }
   }
 }
