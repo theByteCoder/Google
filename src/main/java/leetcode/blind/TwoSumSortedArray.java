@@ -5,13 +5,13 @@ import java.util.Arrays;
 public class TwoSumSortedArray {
 
     public static void main(String[] args) {
-        int[] a = {2, 7, 11, 15};
-        int targetSum = 9;
-        int[] res = findTwoSum(a, targetSum);
+        int[] a = {0, 2, 7, 11, 15};
+        int targetSum = 15;
+        int[] res = findTwoSumSortedArray(a, targetSum);
         System.out.println(Arrays.toString(res));
     }
 
-    private static int[] findTwoSum(int[] arr, int targetSum) {
+    private static int[] findTwoSumSortedArray(int[] arr, int targetSum) {
         int[] res = new int[2];
         int left = 0;
         int right = arr.length - 1;
