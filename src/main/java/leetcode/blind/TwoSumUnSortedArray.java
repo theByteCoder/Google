@@ -1,26 +1,38 @@
 package leetcode.blind;
 
-import java.util.HashSet;
+import java.util.Arrays;
+import java.util.HashMap;
 
 public class TwoSumUnSortedArray {
 
     public static void main(String[] args) {
         int[] a = {8, 0, 2, 7, 15, 11};
         int targetSum = 15;
-        boolean res = findTwoSumUnSortedArray(a, targetSum);
-        System.out.println(res);
+        int[] res = findTwoSumUnSortedArray(a, targetSum);
+        System.out.println(Arrays.toString(res));
     }
 
-    private static Boolean findTwoSumUnSortedArray(int[] arr, int targetSum) {
-        HashSet<Integer> hashSet = new HashSet<>();
+    public static int[] findTwoSumUnSortedArray(int[] nums, int target) {
         int left = 0;
-        int right = arr.length - 1;
-        while (left <= right) {
-            if (hashSet.contains(arr[left])) {
-                return true;
-            } else hashSet.add(targetSum - arr[left]);
+        int right = nums.length;
+
+        int[] res = new int[2];
+        HashMap<Integer, Integer> complementMap = new HashMap<>();
+
+        while (left < right) {
+            int item = nums[left];
+            if (complementMap.containsKey(item)) {
+                int indexOfComplement = complementMap.get(item);
+                res[0] = left;
+                res[1] = indexOfComplement;
+                break;
+            } else {
+                int complementMapKey = target - nums[left];
+                int indexOfComplement = left;
+                complementMap.put(complementMapKey, indexOfComplement);
+            }
             left++;
         }
-        return false;
+        return res;
     }
 }
