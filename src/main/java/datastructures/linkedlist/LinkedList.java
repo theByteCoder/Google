@@ -1,4 +1,4 @@
-package datastructures;
+package datastructures.linkedlist;
 
 import java.util.Objects;
 import java.util.Optional;
@@ -20,6 +20,7 @@ class Node<T> {
 }
 
 class LinkedList<T> {
+
     Node<T> head;
 
     LinkedList() {

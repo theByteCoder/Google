@@ -1,4 +1,4 @@
-package datastructures;
+package datastructures.arraylist;
 
 public class ArrayListImpl {
 

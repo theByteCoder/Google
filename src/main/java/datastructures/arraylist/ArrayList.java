@@ -1,6 +1,6 @@
-package datastructures;
+package datastructures.arraylist;
 
-public class ArrayList<T> {
+class ArrayList<T> {
 
     private T[] array;
     private int size;
