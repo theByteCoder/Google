@@ -33,4 +33,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=local-development -Dsonar.host.url=https://7776-116-193-141-56.ngrok.io -Dsonar.login=sqp_32c49ac040b8e11dbc579a2d61c17f7214fd9bcb
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=local-development -Dsonar.host.url=https://05c8-116-193-141-56.ngrok.io -Dsonar.login=sqp_32c49ac040b8e11dbc579a2d61c17f7214fd9bcb

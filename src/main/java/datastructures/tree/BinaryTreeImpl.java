@@ -28,6 +28,18 @@ public class BinaryTreeImpl {
         tree = new BinaryTree();
         root = tree.buildTreePreOrder(nodes);
         Print.levelOrder(root);
+
+        System.out.println(BinaryTree.countNodes(root));
+        System.out.println(tree.sumOfNodes(root));
+        System.out.println(BinaryTree.height(root));
+        System.out.println(BinaryTree.diameterBruteForce(root));
+        System.out.println(tree.diameterOptimised(root).diameter);
+
+        int[] subTreeNodes = {2, 4, -1, -1, 5, -1, -1};
+        BinaryTree binarySubTree = new BinaryTree();
+        Node subTreeRoot = binarySubTree.buildTreePreOrder(subTreeNodes);
+
+        System.out.println(binarySubTree.isSubTreeOfTree(subTreeRoot, root));
     }
 
     static class Print {
@@ -103,6 +115,7 @@ public class BinaryTreeImpl {
                 }
             }
         }
+
     }
 
 }
