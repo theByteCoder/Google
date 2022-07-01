@@ -29,11 +29,13 @@ public class BinaryTreeImpl {
         root = tree.buildTreePreOrder(nodes);
         Print.levelOrder(root);
 
-        System.out.println(BinaryTree.countNodes(root));
-        System.out.println(tree.sumOfNodes(root));
-        System.out.println(BinaryTree.height(root));
-        System.out.println(BinaryTree.diameterBruteForce(root));
-        System.out.println(tree.diameterOptimised(root).diameter);
+        System.out.println("Count of nodes - " + BinaryTree.countNodes(root));
+        System.out.println("Sum of nodes - " + tree.sumOfNodes(root));
+        System.out.println("Sum of nodes at level 2 - " + tree.sumOfNodesAtKthLevel(root, 2));
+        System.out.println("Sum of nodes at level 3 - " + tree.sumOfNodesAtKthLevel(root, 3));
+        System.out.println("Height of tree - " + BinaryTree.height(root));
+        System.out.println("Diameter of tree with quadratic solution - " + BinaryTree.diameterBruteForce(root));
+        System.out.println("Diameter of tree with optimised solution - " + tree.diameterOptimised(root).diameter);
 
         int[] subTreeNodes = {2, 4, -1, -1, 5, -1, -1};
         BinaryTree binarySubTree = new BinaryTree();

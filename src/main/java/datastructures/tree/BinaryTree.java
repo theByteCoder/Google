@@ -1,5 +1,8 @@
 package datastructures.tree;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 class Node {
     int data;
     Node left;
@@ -54,6 +57,44 @@ class BinaryTree {
         int leftSum = sumOfNodes(root.left);
         int rightSum = sumOfNodes(root.right);
         return root.data + leftSum + rightSum;
+    }
+
+    public int sumOfNodesAtKthLevel(Node root, int k) {
+        if (root == null) return 0;
+        int sum = 0;
+        int level = 1;
+        int isSameLevel = 0;
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            while (size > 0) {
+                Node node = queue.peek();
+                queue.remove();
+                size--;
+
+                if (level == k) {
+                    isSameLevel = 1;
+                    sum += node != null ? node.data : 0;
+                } else {
+                    addToQueue(node, queue);
+                }
+            }
+            level++;
+            if (isSameLevel == 1) break;
+        }
+        return sum;
+    }
+
+    private static void addToQueue(Node node, Queue<Node> queue) {
+        if (node != null) {
+            if (node.left != null) {
+                queue.add(node.left);
+            }
+            if (node.right != null) {
+                queue.add(node.right);
+            }
+        }
     }
 
     public static int height(Node root) {
