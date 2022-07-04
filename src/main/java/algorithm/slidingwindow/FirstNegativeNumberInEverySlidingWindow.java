@@ -1,10 +1,11 @@
-package algorithm;
+package algorithm.slidingwindow;
 
 
 import org.apache.commons.lang3.time.StopWatch;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Queue;
 import java.util.logging.Logger;
 
 public class FirstNegativeNumberInEverySlidingWindow {
@@ -16,7 +17,7 @@ public class FirstNegativeNumberInEverySlidingWindow {
     }
 
     public static void main(String[] args) {
-        int[] arr = {12, -1, -7, 8, -15, 30, 16, 28};
+        int[] arr = {12, 12, 12, -1, -7, 8, -15, 30, 16, 28};
         int kTerm = 3;
 
         Logger logger = Logger.getLogger(FirstNegativeNumberInEverySlidingWindow.class.getName());
@@ -60,7 +61,7 @@ public class FirstNegativeNumberInEverySlidingWindow {
 
     private static ArrayList<Integer> findFirstNegative(int[] array, int kTerm) {
         ArrayList<Integer> arrayList = new ArrayList<>();
-        LinkedList<Integer> linkedList = new LinkedList<>();
+        Queue<Integer> linkedList = new LinkedList<>();
         int length = array.length;
         for (int i = 0; i < kTerm; i++) {
             if (array[i] < 0) {
@@ -73,7 +74,7 @@ public class FirstNegativeNumberInEverySlidingWindow {
             } else {
                 arrayList.add(0);
             }
-            while ((!linkedList.isEmpty()) && linkedList.peek() < (i - kTerm + 1)) {
+            while (!linkedList.isEmpty() && linkedList.peek() < (i - kTerm + 1)) {
                 linkedList.remove();
             }
             if (array[i] < 0) {

@@ -1,4 +1,4 @@
-package algorithm;
+package algorithm.binarysearch;
 
 import java.util.logging.Logger;
 

@@ -1,4 +1,4 @@
-package algorithm;
+package algorithm.slidingwindow;
 
 import java.util.Map;
 import java.util.logging.Logger;
