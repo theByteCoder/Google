@@ -10,14 +10,12 @@ public class FibonacciNthNumber {
     }
 
     private static int findNthFibonacciNumber(int n) {
-        int res;
         if (n == 0) {
-            res = 0;
+            return  0;
         } else if (n == 1 || n == 2) {
-            res = 1;
+            return  1;
         } else {
-            res = findNthFibonacciNumber(n - 1) + findNthFibonacciNumber(n - 2);
+            return findNthFibonacciNumber(n - 1) + findNthFibonacciNumber(n - 2);
         }
-        return res;
     }
 }
