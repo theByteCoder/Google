@@ -69,8 +69,7 @@ class BinaryTree {
         while (!queue.isEmpty()) {
             int size = queue.size();
             while (size > 0) {
-                Node node = queue.peek();
-                queue.remove();
+                Node node = queue.poll();
                 size--;
 
                 if (level == k) {
