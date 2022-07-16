@@ -1,4 +1,4 @@
-package algorithm;
+package algorithm.sorting;
 
 import java.util.Arrays;
 import java.util.logging.Logger;
@@ -26,7 +26,7 @@ public class MergeSort {
         }
     }
 
-    static void merge(int[] arr, int left, int mid, int right) {
+    public static void merge(int[] arr, int left, int mid, int right) {
         int leftArrSize = mid - left + 1;
         int rightArrSize = right - mid;
 

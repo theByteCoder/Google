@@ -1,30 +1,54 @@
 package datastructures.graph;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Graph {
+    LinkedList<Integer>[] adjacencyList;
+    private final int totalEdges;
+    private int edges;
 
-    private static final HashMap<Integer, List<Integer>> adjacencyList = new HashMap<>();
-
-
-    public static void main(String[] args) {
-        int nodes = 5;
-
-        buildGraph(nodes);
+    @SuppressWarnings("unchecked")
+    public Graph(int vertices, int totalEdges) {
+        this.adjacencyList = new LinkedList[vertices];
+        this.totalEdges = totalEdges;
+        for (int i = 0; i < vertices; i++) this.adjacencyList[i] = new LinkedList<>();
     }
 
-    private static void buildGraph(int n) {
-        for (int i = 1; i <= n; i++) {
-            adjacencyList.put(i, new ArrayList<>());
+    public void addEdges(int source, int destination) throws Exception {
+        if (this.edges < this.totalEdges) {
+            this.edges++;
+            this.adjacencyList[source].add(destination);
+            this.adjacencyList[destination].add(source);
+        } else throw new Exception("Number of allocated edges exhausted");
+    }
+
+    public ArrayList<Integer> bfs(int source, int destination) {
+        ArrayList<Integer> res = new ArrayList<>();
+        boolean[] isVisited = new boolean[this.adjacencyList.length];
+        int[] parent = new int[this.adjacencyList.length];
+        Queue<Integer> queue = new LinkedList<>();
+        queue.add(source);
+        parent[source] = -1;
+        isVisited[source] = true;
+
+        while (!queue.isEmpty()) {
+            int current = queue.poll();
+            if (current == destination) break;
+            for (int neighbour : this.adjacencyList[current]) {
+                if (!isVisited[neighbour]) {
+                    queue.add(neighbour);
+                    isVisited[neighbour] = true;
+                    parent[neighbour] = current;
+                }
+            }
         }
-        adjacencyList.put(1, Collections.singletonList(2));
-        adjacencyList.put(2, Arrays.asList(1, 3, 4));
-        adjacencyList.put(3, Collections.singletonList(1));
-        adjacencyList.put(4, Arrays.asList(2, 3));
-        adjacencyList.put(5, Arrays.asList(1, 3));
-
-        System.out.println(adjacencyList.values());
+        int curr = destination;
+        while (parent[curr] != -1) {
+            res.add(curr);
+            curr = parent[curr];
+        }
+        return res;
     }
-
-
 }
