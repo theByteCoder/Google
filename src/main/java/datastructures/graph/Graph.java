@@ -3,6 +3,7 @@ package datastructures.graph;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 public class Graph {
     LinkedList<Integer>[] adjacencyList;
@@ -50,5 +51,43 @@ public class Graph {
             curr = parent[curr];
         }
         return res;
+    }
+
+    public boolean dfsIteration(int source, int destination) {
+        if (source == destination) return true;
+        boolean[] isVisited = new boolean[adjacencyList.length];
+        isVisited[source] = true;
+        @SuppressWarnings({"unchecked", "rawtypes"}) Stack<Integer> stack = new Stack();
+        stack.push(source);
+        while (!stack.isEmpty()) {
+            int curr = stack.pop();
+            if (curr == destination) return true;
+            for (int neighbour : adjacencyList[curr]) {
+                if (!isVisited[neighbour]) {
+                    stack.push(neighbour);
+                    isVisited[neighbour] = true;
+                }
+            }
+        }
+        return false;
+    }
+
+
+    private boolean dfsRecursion(int source, int destination, boolean[] isVisited) {
+        if (source == destination) return true;
+        for (int neighbour : adjacencyList[source]) {
+            if (!isVisited[neighbour]) {
+                isVisited[neighbour] = true;
+                boolean isConnected = dfsRecursion(neighbour, destination, isVisited);
+                if (isConnected) return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean dfsIsConnected(int source, int destination) {
+        if (source == destination) return true;
+        boolean[] isVisited = new boolean[adjacencyList.length];
+        return dfsRecursion(source, destination, isVisited);
     }
 }

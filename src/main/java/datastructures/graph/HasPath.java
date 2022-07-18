@@ -5,57 +5,63 @@ import java.util.*;
 public class HasPath {
 
     public static void main(String[] args) {
-        Map<String, String[]> graph = Map.of("a", new String[]{"b", "c"}, "b", new String[]{"d"}, "c", new String[]{"e"}, "d", new String[]{"f"}, "e", new String[]{}, "f", new String[]{});
+        Map<Integer, Integer[]> graph = Map.of(
+                1, new Integer[]{2, 3},
+                2, new Integer[]{4},
+                3, new Integer[]{5},
+                4, new Integer[]{6},
+                5, new Integer[]{},
+                6, new Integer[]{}
+        );
 
-        String src = "a";
+        int src = 1;
 
-        System.out.println(hasPathDepthFirst(graph, src, "e"));
-        System.out.println(hasPathDepthFirst(graph, src, "f"));
+        System.out.println(hasPathDepthFirst(graph, src, 5));
+        System.out.println(hasPathDepthFirst(graph, src, 6));
 
-        System.out.println(hasPathDepthFirstRecursive(graph, src, "f"));
+        System.out.println(hasPathDepthFirstRecursive(graph, src, 6));
 
-        System.out.println(hasPathDepthFirstRecursive(graph, src, "x"));
+        System.out.println(hasPathDepthFirstRecursive(graph, src, 7));
 
-        System.out.println(hasPathDepthFirstRecursive(graph, src, "d"));
+        System.out.println(hasPathDepthFirstRecursive(graph, src, 4));
 
-        System.out.println(hasPathDepthBreadthFirst(graph, src, "z"));
-        System.out.println(hasPathDepthBreadthFirst(graph, src, "a"));
+        System.out.println(hasPathDepthBreadthFirst(graph, src, 8));
+        System.out.println(hasPathDepthBreadthFirst(graph, src, 1));
     }
 
-    private static boolean hasPathDepthFirst(Map<String, String[]> graph, String source, String destination) {
-        if (source.equals(destination)) return true;
-        Stack<String> stack = new Stack<>();
+    private static boolean hasPathDepthFirst(Map<Integer, Integer[]> graph, int source, int destination) {
+        if (source == destination) return true;
+        Stack<Integer> stack = new Stack<>();
         stack.add(source);
         while (!stack.isEmpty()) {
-            String current = stack.pop();
-            if (current.equals(destination)) return true;
+            int current = stack.pop();
+            if (current == destination) return true;
             Collections.addAll(stack, graph.get(current));
         }
         return false;
     }
 
-    private static boolean hasPathDepthFirstRecursive(Map<String, String[]> graph, String source, String destination) {
-        if (source.equals(destination)) return true;
-        String[] neighbours = graph.get(source);
-        for (String neighbour : neighbours) {
-            if (neighbour.equals(destination)) {
+    private static boolean hasPathDepthFirstRecursive(Map<Integer, Integer[]> graph, int source, int destination) {
+        if (source == destination) return true;
+        Integer[] neighbours = graph.get(source);
+        for (int neighbour : neighbours) {
+            if (neighbour == destination) {
                 return true;
             }
-            if (neighbour.length() > 0)
-                return hasPathDepthFirstRecursive(graph, neighbour, destination);
+            return hasPathDepthFirstRecursive(graph, neighbour, destination);
         }
         return false;
     }
 
-    private static boolean hasPathDepthBreadthFirst(Map<String, String[]> graph, String source, String destination) {
-        if (source.equals(destination)) return true;
-        Queue<String> queue = new LinkedList<>();
+    private static boolean hasPathDepthBreadthFirst(Map<Integer, Integer[]> graph, int source, int destination) {
+        if (source == destination) return true;
+        Queue<Integer> queue = new LinkedList<>();
         queue.add(source);
         while (!queue.isEmpty()) {
-            String current = queue.poll();
-            String[] neighbours = graph.get(current);
-            for (String neighbour : neighbours) {
-                if (neighbour.equals(destination)) return true;
+            int current = queue.poll();
+            Integer[] neighbours = graph.get(current);
+            for (int neighbour : neighbours) {
+                if (neighbour == destination) return true;
                 Collections.addAll(queue, neighbours);
             }
         }

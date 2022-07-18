@@ -74,4 +74,42 @@ public class GraphTest {
 
         Assertions.assertEquals(exception.getMessage(), "Number of allocated edges exhausted");
     }
+
+    @Test
+    void test4() throws Exception {
+        vertices = 7;
+        edges = 8;
+        graph = new Graph(vertices, edges);
+
+        graph.addEdges(0, 1);
+        graph.addEdges(1, 2);
+        graph.addEdges(2, 3);
+        graph.addEdges(3, 4);
+        graph.addEdges(0, 4);
+        graph.addEdges(2, 4);
+        graph.addEdges(4, 5);
+        graph.addEdges(5, 6);
+
+        Assertions.assertTrue(graph.dfsIsConnected(1, 5));
+    }
+
+    @Test
+    void test5() throws Exception {
+        vertices = 7;
+        edges = 8;
+        graph = new Graph(vertices, edges);
+
+        graph.addEdges(0, 1);
+        graph.addEdges(1, 2);
+        graph.addEdges(2, 3);
+        graph.addEdges(3, 4);
+        graph.addEdges(0, 4);
+        graph.addEdges(2, 4);
+        graph.addEdges(4, 5);
+        graph.addEdges(5, 6);
+
+        Assertions.assertTrue(graph.dfsIteration(1, 5));
+        Assertions.assertTrue(graph.dfsIteration(1, 6));
+        Assertions.assertFalse(graph.dfsIteration(1, 7));
+    }
 }
